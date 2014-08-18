@@ -68,7 +68,7 @@ int main(){
                 cin>>b[i][j] , nx += (b[i][j]=='X') , no += (b[i][j]=='O');
                 if(b[i][j]=='e') return 0;
             }
-        }//cout<<nx,sp;cout<<no;el;
+        }
         if(nx-no == 1 or nx-no == 0){
             wx = f('X');
             wo = f('O');
@@ -79,7 +79,7 @@ int main(){
             else if(wo){
                 puts(((nx==no)?"valid":"invalid"));
             }
-            else puts("valid");
+            else puts((nx+no==9)?"valid":"invalid");
         }
         else puts("invalid");
     }
