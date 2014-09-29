@@ -1,3 +1,6 @@
+/* Status : 0.62 second on spoj */
+/* Author : tapopadma tripathy 
+for any inconvenience send mail to tapopadmatripathy1995@gmail.com*/
 #include<iostream>
 #include<cstdio>
 #include<cstring>
