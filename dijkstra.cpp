@@ -4,15 +4,15 @@ struct edge{
     int vertex,weight;
 }var,heap[10000];
 vector<edge>adj[1000];
-int dis[1000],n,m,mxsz=0,sr;
+int dis[1000],n,m,mxsz=1,sr;
 void Insert_heap(edge E){
     heap[mxsz++] = E;
     for(int i=mxsz-1;i && dis[heap[i].vertex] < dis[heap[i/2].vertex];swap(heap[i],heap[i/2]),i/=2);
 }
 void Delete(){
     --mxsz;
-    swap(heap[0],heap[mxsz]);
-    for(int i=0;2*i < mxsz;){
+    swap(heap[1],heap[mxsz]);
+    for(int i=1;2*i < mxsz;){
         int child = dis[heap[2*i].vertex];
         if(1+2*i < mxsz){
             child = min(child,dis[heap[1+2*i].vertex]);
@@ -44,7 +44,7 @@ void dijkstra(int src){
                 Insert_heap(adj[src][i]);  // o log n
             }
         }
-        src = heap[0].vertex;
+        src = heap[1].vertex;
         Delete();// o log n
     }
     for(int i=1;i<=n;++i)
