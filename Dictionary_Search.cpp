@@ -6,7 +6,8 @@ struct TST{
     TST *l,*e,*r;
 };
 TST *G(char c){
-    TST *p = new TST;p->data= c;p->l=p->e=p->r=NULL;p->ie = 0;
+    TST *p = new TST;p->data= c;
+    p->l=p->e=p->r=NULL;p->ie = 0;
     return p;
 }
 void print(TST *root,char *ch,int sz){
@@ -33,7 +34,6 @@ TST *In(TST *root,char *s){
     }
     return root;
 }
-
 int main(){
     TST *root = NULL,*ret=NULL;
     cout<<"Enter no of words in the dictionary to be built:";
@@ -46,7 +46,7 @@ int main(){
     }
     char ch[100];
     cout<<"The dictionary has:\n";
-    print(root,ch,0);
+    print(root,ch,0);bool b=0;
     while(1){
         char s[100];
         cout<<"Search:";cin>>s;
@@ -56,10 +56,12 @@ int main(){
             if(rt->data < s[i]) rt = rt->r;
             else if(rt->data > s[i]) rt = rt->l;
             else{
+                b = rt->ie;
                 rt = rt->e;++i;
                 if(i== strlen(s)) {
                     char ch[100];
                     strcpy(ch,s);
+                    if(b) cout<<ch<<"\n";
                     print(rt,ch,strlen(s));
                     break;
                 }
